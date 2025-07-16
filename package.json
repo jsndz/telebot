@@ -2,7 +2,7 @@
   "name": "project1",
   "version": "1.0.0",
   "description": "Telegram bot",
-  "type":"module",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jsndz/telebot#readme",
   "dependencies": {
     "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "node-telegram-bot-api": "^0.61.0",
     "openai": "^3.3.0",
     "telegraf": "^4.16.3"

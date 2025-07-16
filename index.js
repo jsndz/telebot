@@ -1,7 +1,7 @@
 import { Telegraf } from "telegraf";
 import { TELEGRAM_TOKEN } from "./config.js";
 import { message } from "telegraf/filters";
-
+import express from "express";
 const bot = new Telegraf(TELEGRAM_TOKEN);
 const userUploadContext = new Map();
 bot.start((ctx) =>
@@ -122,7 +122,8 @@ bot.on(message("text"), (ctx) => {
 
 bot.launch();
 console.log("Mimir bot is running...");
-
+process.once("SIGINT", () => bot.stop("SIGINT"));
+process.once("SIGTERM", () => bot.stop("SIGTERM"));
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -131,6 +132,3 @@ app.use(express.static("public"));
 app.listen(PORT, () => {
   console.log(`🌐 Web server running at http://localhost:${PORT}`);
 });
-
-process.once("SIGINT", () => bot.stop("SIGINT"));
-process.once("SIGTERM", () => bot.stop("SIGTERM"));
