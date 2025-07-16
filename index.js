@@ -123,5 +123,14 @@ bot.on(message("text"), (ctx) => {
 bot.launch();
 console.log("Mimir bot is running...");
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.static("public"));
+
+app.listen(PORT, () => {
+  console.log(`🌐 Web server running at http://localhost:${PORT}`);
+});
+
 process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
