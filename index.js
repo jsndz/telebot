@@ -29,6 +29,7 @@ Example: /upload DBMS Module2
 
 /ping  → Check if bot is online
 
+
 *After /upload, send a PDF or image.*
 
 *To find notes later*:  
@@ -40,6 +41,9 @@ bot.command("help", (ctx) => ctx.reply(helpText, { parse_mode: "Markdown" }));
 bot.command("quit", async (ctx) => {
   await ctx.telegram.leaveChat(ctx.message.chat.id);
   await ctx.leaveChat();
+});
+bot.command("ping", (ctx) => {
+  ctx.reply("I'm alive!");
 });
 
 bot.command("upload", async (ctx) => {
@@ -70,7 +74,7 @@ bot.on("document", async (ctx) => {
     const fileName = ctx.message.document.file_name;
     const savePath = `${topic}/${subtopic}`;
 
-    ctx.reply(` *${fileName}* saved to *${savePath}*`, {
+    ctx.reply(` *${fileName}* saved to *${savePath}* by ${ctx.from.username}`, {
       parse_mode: "Markdown",
     });
 
@@ -87,7 +91,9 @@ bot.on("photo", async (ctx) => {
     const { topic, subtopic } = userUploadContext.get(ctx.from.id);
     const savePath = `${topic}/${subtopic}`;
 
-    ctx.reply(`Image saved to *${savePath}*`, { parse_mode: "Markdown" });
+    ctx.reply(`Image saved to *${savePath}*  by ${ctx.from.username}`, {
+      parse_mode: "Markdown",
+    });
     userUploadContext.delete(ctx.from.id);
   } else {
     ctx.reply(" Please use /upload <topic> <subtopic> before sending a photo.");

@@ -103,25 +103,13 @@ linkedlist
 
 ---
 
-## What This Bot Doesn’t Do (by design)
-
-| Feature       | Status        | Reason              |
-| ------------- | ------------- | ------------------- |
-| File search   | Not supported | Use Telegram search |
-| Topic listing | Not supported | Avoids storage      |
-| Stats/export  | Not supported | Stateless by design |
-| User tracking | Not supported | Privacy-respecting  |
-
----
-
 ## Tech Stack
 
-| Component | Choice                      |
-| --------- | --------------------------- |
-| Language  | Node.js                     |
-| Framework | Telegraf.js                 |
-| Hosting   | Railway, Render, or any VPS |
-| Storage   | None — uses Telegram only   |
+| Component | Choice      |
+| --------- | ----------- |
+| Language  | Node.js     |
+| Framework | Telegraf.js |
+| Hosting   | Render      |
 
 ---
 
@@ -166,7 +154,7 @@ node index.js
 
 ## License
 
-MIT © 2025 \[Your Name]
+MIT © 2025 \jsndz
 
 ---
 
